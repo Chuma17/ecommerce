@@ -87,26 +87,27 @@ function AddProductPage(props) {
 
                                                 </div>
 
-                                                <div className="form-floating form-outline mb-4">
-                                                    <input type="text" value={image} onChange={e => setImage(e.target.value)} required disabled className="form-control form-control-lg" />
-                                                    <label className="form-label" htmlfor="form2Example27">Item Image</label>
+                                                <div className="form-outline mb-4">
+                                                    <label className="form-label btn btn-danger" for="customFile">Upload Image</label>
+                                                    <input type="file" onChange={uploadHandler} class="form-control btn btn-outline-danger" id="customFile" />
                                                 </div>
 
-                                                <div className="form-floating form-outline mb-4">
+                                                {uploading && <div className="mb-4 btn btn-primary p-2 btn-block disabled">Uploading.....</div>}
+
+                                                {/* <div className="form-floating form-outline mb-4">
+                                                    <input type="text" id="blah" value={image} onChange={e => setImage(e.target.value)} required disabled className="form-control form-control-lg" />
+                                                    <label className="form-label" htmlfor="form2Example27">Item Image</label>
+                                                </div> */}
+
+                                                <div className="form-outline mb-4">
                                                     <input type="text" value={price} onChange={e => setPrice(e.target.value)} required className="form-control form-control-lg" />
                                                     <label className="form-label" htmlfor="form2Example27">Item Price</label>
                                                 </div>
 
                                                 <div className="form-outline mb-4">
-                                                    <label className="form-label" for="customFile">Upload Image</label>
-                                                    <input type="file" onChange={uploadHandler} class="form-control" id="customFile" />
-                                                </div>
-
-                                                {uploading && <div className="mb-4 btn btn-primary p-2 btn-block">Uploading.....</div>}
-
-                                                <div className="mb-4">
+                                                    <label className="form-label" htmlfor="form2Example27">Item Category</label>
                                                     <select value={category} onChange={e => setCategory(e.target.value)} required class="form-select form-control" aria-label="Default select example">
-                                                        <option value="">--- Select Category ---</option>
+                                                        <option hidden value="">--- Select Category ---</option>
 
                                                         {categories.length > 0 && categories.map(category => {
                                                             return <option key={category._id} value={category._id}>{category.name}</option>
