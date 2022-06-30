@@ -52,7 +52,7 @@ function AddProductPage(props) {
             console.log(categories);
         }
         getCategories();
-    }, [setCategories]);
+    }, [setCategorie]);
 
     return <div>
 
