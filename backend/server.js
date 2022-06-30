@@ -28,7 +28,7 @@ app.post("/users/register", async function (req, res) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: req.body.password,
-        isAdmin: true
+        isAdmin: false
     });
 
     await newUser.save();
