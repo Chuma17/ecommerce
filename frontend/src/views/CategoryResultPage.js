@@ -11,7 +11,6 @@ function CategoryResultPage(props) {
         async function getProducts() {
             const { data } = await axios.get(`http://localhost:5000/category-products/${categoryId}`);
             setProducts(data);
-            console.log(products);
         }
         getProducts();
     }, [setProducts])
