@@ -15,8 +15,9 @@ function AdminProductsPage(props) {
     });
 
     async function deleteHandler(id) {
-        window.location.reload();
         await axios.delete(`http://localhost:5000/products/${id}`);
+        window.location.reload();
+
     }
 
     useEffect(() => {
