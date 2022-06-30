@@ -10,7 +10,7 @@ const [users, setUsers] = useState(0);
 
 useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    !userInfo && props.history.push("/");
+    !userInfo || !userInfo.isAdmin && props.history.push("/");
 });
 
 //orders

@@ -11,12 +11,12 @@ function AddProductPage(props) {
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState([]);
     const [price, setPrice] = useState(0);
-
     const [loading, setLoading] = useState(false);
+    const [uploading, setUploading] = useState(false);
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        !userInfo && props.history.push("/");
+        !userInfo || !userInfo.isAdmin && props.history.push("/");
     });
 
     const submitHandler = async (e) => {
@@ -28,6 +28,21 @@ function AddProductPage(props) {
             props.history.push("/admin-products");
             window.location.reload();
         }
+    }
+
+    async function uploadHandler(e) {
+        setUploading(true);
+        const file = e.target.files[0];
+        const data = new FormData();
+        data.append("file", file);
+        data.append("cloud_name", "dsmyyzqpe");
+        data.append("upload_preset", "dreamchasers");
+        fetch("https://api.cloudinary.com/v1_1/dsmyyzqpe/image/upload", { method: "post", body: data })
+            .then(res => res.json())
+            .then(data => {
+                setImage(data.url);
+                setUploading(false)
+            })
     }
 
     useEffect(() => {
@@ -69,10 +84,11 @@ function AddProductPage(props) {
                                                 <div className="form-outline mb-4">
                                                     <input type="text" value={name} onChange={e => setName(e.target.value)} required className="form-control form-control-lg" />
                                                     <label className="form-label" htmlfor="form2Example27">Item Name</label>
+
                                                 </div>
 
-                                                <div className="form-outline mb-4">
-                                                    <input type="text" value={image} onChange={e => setImage(e.target.value)} required className="form-control form-control-lg" />
+                                                <div className="form-floating form-outline mb-4">
+                                                    <input type="text" value={image} onChange={e => setImage(e.target.value)} required disabled className="form-control form-control-lg" />
                                                     <label className="form-label" htmlfor="form2Example27">Item Image</label>
                                                 </div>
 
@@ -80,6 +96,13 @@ function AddProductPage(props) {
                                                     <input type="text" value={price} onChange={e => setPrice(e.target.value)} required className="form-control form-control-lg" />
                                                     <label className="form-label" htmlfor="form2Example27">Item Price</label>
                                                 </div>
+
+                                                <div className="form-outline mb-4">
+                                                    <label className="form-label" for="customFile">Upload Image</label>
+                                                    <input type="file" onChange={uploadHandler} class="form-control" id="customFile" />
+                                                </div>
+
+                                                {uploading && <div className="mb-4 btn btn-primary p-2 btn-block">Uploading.....</div>}
 
                                                 <div className="mb-4">
                                                     <select value={category} onChange={e => setCategory(e.target.value)} required class="form-select form-control" aria-label="Default select example">
@@ -92,7 +115,8 @@ function AddProductPage(props) {
                                                 </div>
 
                                                 <div className="pt-1 mb-3 text-center">
-                                                    <button className="btn btn-dark btn-outline-danger btn-block" type="submit">Add</button>
+                                                    {uploading && <button disabled className="btn btn-dark btn-outline-danger btn-block" type="submit">Add</button>}
+                                                    {!uploading && <button className="btn btn-dark btn-outline-danger btn-block" type="submit">Add</button>}
                                                 </div>
 
                                             </form>

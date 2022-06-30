@@ -30,8 +30,8 @@ function HomePage(params) {
 
                     return <div className="col">
 
-                        <div className="card mt-4 mb-4 bg-dark text-light" style={{ width: "18rem" }}>
-                            <a href={`/product/${product._id}`}> <img src={product.image} className="card-img-top" style={{ height: "13rem" }} alt="..." /> </a>
+                        <div className="card mt-4 mb-4 bg-dark text-light" style={{ width: "18rem", borderRadius: "5%" }}>
+                            <a href={`/product/${product._id}`}> <img src={product.image} className="card-img-top" style={{ height: "13rem", borderRadius: "5%" }} alt="..." /> </a>
                             <div className="card-body text-center">
                                 <h5 className="card-title">{product.name}</h5>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

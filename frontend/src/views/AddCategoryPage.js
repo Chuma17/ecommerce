@@ -12,7 +12,7 @@ function AddCategoryPage(props) {
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        !userInfo && props.history.push("/");
+        !userInfo || !userInfo.isAdmin && props.history.push("/");
     });
 
     const submitHandler = async (e) => {

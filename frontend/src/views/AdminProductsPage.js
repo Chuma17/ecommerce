@@ -11,7 +11,7 @@ function AdminProductsPage(props) {
 
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        !userInfo && props.history.push("/");
+        !userInfo || !userInfo.isAdmin && props.history.push("/");
     });
 
     async function deleteHandler(id) {
@@ -40,8 +40,8 @@ function AdminProductsPage(props) {
 
                     return <div className="col">
 
-                        <div className="card mt-4 bg-dark text-light text-center mb-4" style={{ width: "18rem" }}>
-                            <img src={product.image} className="card-img-top" style={{ height: "13rem" }} alt="..." />
+                        <div className="card mt-4 bg-dark text-light text-center mb-4" style={{ width: "18rem", borderRadius: "5%" }}>
+                            <img src={product.image} className="card-img-top" style={{ height: "13rem", borderRadius: "5%" }} alt="..." />
                             <div className="card-body">
                                 <h5 className="card-title">{product.name}</h5>
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

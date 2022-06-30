@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Header.css";
 import { Link, useHistory } from "react-router-dom";
-import { confirmAlert } from 'react-confirm-alert';
 
 export default function Header(props) {
 
