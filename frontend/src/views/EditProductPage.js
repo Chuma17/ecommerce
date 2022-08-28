@@ -53,7 +53,9 @@ function EditProductPage(props) {
 
         if (data.success) {
             history.push("/admin-products");
+
             window.location.reload();
+            
         }
 
     }

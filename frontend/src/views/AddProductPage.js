@@ -99,7 +99,7 @@ function AddProductPage(props) {
                                                     <label className="form-label" htmlfor="form2Example27">Item Image</label>
                                                 </div> */}
 
-                                                <div className="form-outline mb-4">
+                                                <div className="form-floating form-outline mb-4">
                                                     <input type="text" value={price} onChange={e => setPrice(e.target.value)} required className="form-control form-control-lg" />
                                                     <label className="form-label" htmlfor="form2Example27">Item Price</label>
                                                 </div>

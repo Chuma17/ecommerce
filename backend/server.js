@@ -28,7 +28,6 @@ app.post("/users/register", async function (req, res) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         password: req.body.password,
-        isAdmin: false
     });
 
     await newUser.save();
@@ -216,8 +215,8 @@ app.get("/summary", async (req, res) => {
     console.log({productCount, userCount, categoryCount});
 })
 
-// const mongodbURL = "mongodb://localhost/ecommerce"
-const mongodbURL = "mongodb+srv://Chuma:barryallen@dreamchasers.lwar18o.mongodb.net/?retryWrites=true&w=majority"
+const mongodbURL = "mongodb://localhost/ecommerce"
+// const mongodbURL = "mongodb+srv://Chuma:barryallen@dreamchasers.lwar18o.mongodb.net/?retryWrites=true&w=majority"
 
 mongoose.connect(mongodbURL)
     .then(result => console.log("Mongodb connected"))

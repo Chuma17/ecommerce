@@ -14,7 +14,11 @@ function AccountPage(props) {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
 
-
+    useEffect(() => {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        !userInfo && props.history.push("/");
+    });
+    
     const submitHandler = async (e) => {
 
         e.preventDefault();

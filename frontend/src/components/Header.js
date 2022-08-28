@@ -88,7 +88,7 @@ export default function Header(props) {
             </li>}
 
             {!userInfo && <li class="nav-item m-auto">
-              <a class="nav-link navbar-link active" href="/register"> <i className="fas fa-pen" > </i> SignUp</a>
+              <a class="nav-link navbar-link active" href="/register"> <i className="fas fa-pen"></i> SignUp</a>
             </li>}
 
             {!userInfo && <li class="nav-item dropdown m-auto">
